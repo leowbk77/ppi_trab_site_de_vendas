@@ -1,0 +1,191 @@
+/* VARIAVEIS DE COR*/
+
+:root {
+    --teste: #fff;
+    --nav-color: black;
+}
+
+/* */
+
+body {
+    margin: 0 auto;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    border: 1px solid black;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* CABECALHO */
+
+.cabecalho{
+    width: 100%;
+    display: inline-block;
+}
+
+.cabecalho a {
+    text-decoration: none;
+}
+
+.header-div {
+    background-color: gray;
+}
+
+.nav-div {
+    background-color: var(--nav-color);
+}
+
+header {
+    width: max-content;
+    margin: 0 auto;
+}
+
+header h1 {
+    display: inline-block; /* TEMPORARIO */
+}
+
+.upper-nav {
+    width: 100%;
+    padding: 1rem 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.left{
+    display: inherit;
+    float: left;
+    margin-left: 1rem;
+}
+
+.center-search-bar{
+    width: 60%;
+    display: inherit;
+}
+
+.right{
+    display: inherit;
+    float: right;
+    margin-right: 1rem;
+}
+
+/* BOTOES */
+
+#search-bar-btn {
+    width: 1.5rem;
+    height: 2rem;
+    margin-left: 0;
+    background-color: var(--nav-color);
+    border: 2px solid red; /* A COR VERMELHA EH TEMPORARIA (O estilo todo na real)*/
+    color: red;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 0 5px 5px 0;
+}
+#search-bar-btn:hover {
+    border-color: var(--teste);
+    background-color: red;
+    color: white;
+}
+
+/* BARRAS */
+
+#search {
+    width: 60%;
+    height: 2rem;
+    margin-right: 0;
+    padding: 0 0.5rem;
+    background-color: var(--teste);
+    border: none;
+    border-radius: 5px 0 0 5px;
+    text-decoration: none;
+    outline: none;
+}
+
+#search::placeholder{
+    text-align: center;
+}
+
+
+/* CORPO PRINCIPAL */
+
+main {
+    margin-top: 10px;
+}
+
+.main-content-div {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-areas: 
+    "navbar maincontent asidecontent"
+    ;
+}
+
+.main-content-navbar {
+    border: 1px solid skyblue;
+    grid-area: navbar;
+    margin-left: 1rem;
+    display: block;
+}
+
+.main-content-navbar ul {
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    padding: 1rem;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.main-content-main-section {
+    border: 2px solid blue;
+    border-radius: 5px;
+    padding: 1rem;
+    grid-area: maincontent;
+}
+
+.main-content-aside {
+    grid-area: asidecontent;
+    padding: 1rem;
+}
+
+/* EXIBICAO DE ITEMS */
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.cardProduto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    padding: 1rem;
+}
+.cardProduto:hover {
+    box-shadow: gray 0px 0px 1px, gray 0px 0.5px 2px;
+}
+.cardProduto img {
+    background-color: green;
+    height: 10rem;
+    padding: 2rem;
+}
+.cardProduto a {
+    text-decoration: none;
+}
