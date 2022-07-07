@@ -1,6 +1,6 @@
 <?php
     require "connect.php";
-    $pdo = mysqlConnect();
+    $pdo = connectToMysql();
 
     if($pdo == null){
         // erro na conexao (checar log)
