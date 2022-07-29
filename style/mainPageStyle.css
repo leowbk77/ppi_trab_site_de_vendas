@@ -27,30 +27,42 @@ footer {
     display: inline-block;
 }
 
-.cabecalho a {
-    text-decoration: none;
-}
-
 .header-div {
     background-color: gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5rem;
 }
+
+.store-logo {
+    width: 13rem;
+    height: 4rem;
+}
+
+.center-search-bar{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchForm {
+}
+
+.right-items {
+    display: flex;
+}
+
+/* NAVEGACAO - TRANSFORMAR EM DISPLAY FLEX - */
 
 .nav-div {
     background-color: var(--nav-color);
-}
-
-header {
-    width: max-content;
-    margin: 0 auto;
-}
-
-header h1 {
-    display: inline-block; /* TEMPORARIO */
+    height: 3rem;
 }
 
 .upper-nav {
     width: 100%;
-    padding: 1rem 0;
     display: inline-block;
     text-align: center;
 }
@@ -59,11 +71,6 @@ header h1 {
     display: inherit;
     float: left;
     margin-left: 1rem;
-}
-
-.center-search-bar{
-    width: 60%;
-    display: inherit;
 }
 
 .right{
@@ -96,12 +103,22 @@ header h1 {
 
 /* BARRAS */
 
+/*
 #search {
-    width: 60%;
+    width: 100%;
     height: 2rem;
     margin-right: 0;
     padding: 0 0.5rem;
     background-color: var(--teste);
+    border: none;
+    border-radius: 5px 0 0 5px;
+    text-decoration: none;
+    outline: none;
+}
+*/
+
+#search {
+    height: 2rem;
     border: none;
     border-radius: 5px 0 0 5px;
     text-decoration: none;
