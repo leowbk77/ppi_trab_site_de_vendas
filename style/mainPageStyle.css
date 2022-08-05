@@ -86,8 +86,8 @@ footer {
     height: 2rem;
     margin-left: 0;
     background-color: var(--nav-color);
-    border: 2px solid red; /* A COR VERMELHA EH TEMPORARIA (O estilo todo na real)*/
-    color: red;
+    border: 2px solid rgb(23, 32, 216); /* A COR AZUL EH TEMPORARIA (O estilo todo na real)*/
+    color: rgb(23, 32, 216);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -97,7 +97,7 @@ footer {
 
 #search-bar-btn:hover {
     border-color: var(--teste);
-    background-color: red;
+    background-color: rgb(23, 32, 216);
     color: white;
 }
 
