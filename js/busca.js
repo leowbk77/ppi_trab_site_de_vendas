@@ -2,6 +2,8 @@ const botaoDeBusca = document.getElementById("search-bar-btn");
 const campoDeBusca = document.getElementById("search");
 const gridDosCards = document.getElementById("items-grid");
 
+let numeroDaConsulta = 0; // usar pra calcular o offset
+
 function createCard(){
     // No futuro receber as infos por argumento e colocar no card
     /*  COLOCAR UM ID COM O ID DO PRODUTO ?????
@@ -52,7 +54,8 @@ function renderCards(/*json*/) {
 }
 
 function buildURL(quantidadeDeArgumentos, arrayDeArgumentos){
-    let url = "../php/buscaItems.php?qnt=" + quantidadeDeArgumentos + "&";
+    numeroDaConsulta++;
+    let url = "/php/buscaItems.php?qnt=" + quantidadeDeArgumentos + "&" + "offset=" + numeroDaConsulta + "&";
 
     for(let i = 0; i < quantidadeDeArgumentos; i++){
         url += "key" + i + "=" + arrayDeArgumentos[i] + "&";
@@ -82,5 +85,10 @@ botaoDeBusca.addEventListener("click", function buscaAjax(){
     let scriptURL = buildURL(quantidadeDeParametros, arrayDeBusca); // passar a url pra uma funcao async ?
     console.log(scriptURL);
     renderCards();
-    let JsonDeResultados = buscaJson(scriptURL);
+    let jsonDeResultados = buscaJson(scriptURL);
+    console.log(JSON.parse(jsonDeResultados));
 } );
+
+window.onload = function () {
+    numeroDaConsulta = 0;
+}
