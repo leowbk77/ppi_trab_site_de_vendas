@@ -80,8 +80,7 @@ botaoDeBusca.addEventListener("click", function buscaAjax(){
     if(quantidadeDeParametros > 5) quantidadeDeParametros = 5;
     
     let scriptURL = buildURL(quantidadeDeParametros, arrayDeBusca); // passar a url pra uma funcao async ?
-    //console.log(scriptURL);
-
+    console.log(scriptURL);
     renderCards();
     let JsonDeResultados = buscaJson(scriptURL);
 } );
