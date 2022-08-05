@@ -1,0 +1,40 @@
+.loginDiv {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-contnt-login {
+    /*
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    */
+    margin: 0 auto;
+    /* Nao quer centralizar */
+}
+
+.formLoginItem input {
+    margin-bottom: 1rem;
+    height: 2rem;
+}
+
+.formLoginItem button {
+    height: 1.5rem;
+    width: 5rem;
+}
+
+.login-nav-bar {
+    background-color: var(--nav-color);
+    height: 3rem;
+}
+
+#login-titulo {
+    color: white;
+    padding: 1rem;
+    margin: 0; /* MUDAR */
+    font-size: 1.5em;
+}
