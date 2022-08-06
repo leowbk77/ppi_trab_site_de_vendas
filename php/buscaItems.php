@@ -1,6 +1,5 @@
 <?php
     require "connect.php";
-    require "classeAnuncio.php";
 
     $numeroDeArgumentos = $_GET["qnt"];
     $arrayDeArgumentos = [];
@@ -50,18 +49,18 @@
             // pega as tuplas e cria os objetos que serao transformados no JSON
             $arrayDeObjetos = [];
             while($row = $stmt->fetch()){
-                $arrayDeObjetos[] = new Anuncio(
-                                    $row['codigo'],
-                    htmlspecialchars($row['titulo']),
-                    htmlspecialchars($row['descricao']),
-                    htmlspecialchars($row['preco']),
-                    htmlspecialchars($row['data_hora']),
-                    htmlspecialchars($row['cep']),
-                    htmlspecialchars($row['bairro']),
-                    htmlspecialchars($row['cidade']),
-                    htmlspecialchars($row['estado']),
-                                    $row['codigo_categoria'],
-                                    $row['codigo_anunciante']
+                $arrayDeObjetos[] = array(
+                    "codigo"    => $row['codigo'],
+                    "titulo"    => $row['titulo'],
+                    "descricao" => $row['descricao'],
+                    "preco"     => $row['preco'],
+                    "data_hora" => $row['data_hora'],
+                    "cep"       => $row['cep'],
+                    "bairro"    => $row['bairro'],
+                    "cidade"    => $row['cidade'],
+                    "estado"    => $row['estado'],
+                    "codigo_categoria"  => $row['codigo_categoria'],
+                    "codigo_anunciante" => $row['codigo_anunciante'],
                 );
             }
 
