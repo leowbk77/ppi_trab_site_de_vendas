@@ -17,7 +17,7 @@
 
         try {
             $pdo = new PDO($dataSource, $username, $passwd, $options);
-            return pdo;
+            return $pdo;
         }catch(Exception $e){
             error_log($e->getMessage(), 3, 'connectLog.log');
             return null;

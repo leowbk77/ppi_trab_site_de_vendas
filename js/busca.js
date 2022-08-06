@@ -2,7 +2,7 @@ const botaoDeBusca = document.getElementById("search-bar-btn");
 const campoDeBusca = document.getElementById("search");
 const gridDosCards = document.getElementById("items-grid");
 
-let numeroDaConsulta = 0; // usar pra calcular o offset
+let numeroDaConsulta = -1; // usar pra calcular o offset
 
 function createCard(){
     // No futuro receber as infos por argumento e colocar no card
@@ -55,7 +55,7 @@ function renderCards(/*json*/) {
 
 function buildURL(quantidadeDeArgumentos, arrayDeArgumentos){
     numeroDaConsulta++;
-    let url = "/php/buscaItems.php?qnt=" + quantidadeDeArgumentos + "&" + "offset=" + numeroDaConsulta + "&";
+    let url = "/php/buscaItems.php?qnt=" + quantidadeDeArgumentos + "&" + "offset=" + numeroDaConsulta + "&"; // atentar ao comeco do link
 
     for(let i = 0; i < quantidadeDeArgumentos; i++){
         url += "key" + i + "=" + arrayDeArgumentos[i] + "&";
@@ -90,5 +90,5 @@ botaoDeBusca.addEventListener("click", function buscaAjax(){
 } );
 
 window.onload = function () {
-    numeroDaConsulta = 0;
+    numeroDaConsulta = -1;
 }

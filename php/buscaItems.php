@@ -2,25 +2,24 @@
     require "connect.php";
     require "classeAnuncio.php";
 
-    // URL: 
-    //../php/buscaItems.php?qnt=3&key0=buscakek&key1=hello&key2=world
-    // provavel vai ser necessarios mais argumentos 
-
     $numeroDeArgumentos = $_GET["qnt"];
     $arrayDeArgumentos = [];
 
-    $nmax = 6; // define o maximo de resultados da busca
-    $offset = $_GET["offset"]; // pega o offset para ser calculado
+    // define o maximo de resultados da busca
+    $nmax = 6; 
+    // pega o offset para ser calculado
+    $offset = $_GET["offset"];
     $offset *= $nmax;
 
-    for($i = 0; $i < $numeroDeArgumentos; $i++){ // preenchendo o array de argumentos
-        $arrayDeArgumentos[] = $_GET["key{$i}"];
-    }
+    // preenchendo o array de argumentos
+    //for($i = 0; $i < $numeroDeArgumentos; $i++){ 
+    //    $arrayDeArgumentos[] = $_GET["key{$i}"];
+    //}
 
     $pdo = connectToMysql();
-
     if(($pdo == null) or ($numeroDeArgumentos < 1)){
-        // erro
+        // erro a ser tratado
+        echo "erro no IF";
     }else{
         try {
 
@@ -28,22 +27,32 @@
             SELECT *
             FROM anuncio
             WHERE
-            SQL; // base da query
+            SQL; 
+            // base da query
 
             for($i = 0; $i < $numeroDeArgumentos; $i++){
-                $sql .= "\ntitulo like '%?%'"; // pesquisando por titulo
+                $sql .= "\ntitulo like '%?%'";
                 if($i + 1 < $numeroDeArgumentos){
                     $sql .= " AND";
                 }
-            } // ao final deve ter a query correta dinamicamente
+            } 
+            // ao final deve ter a query correta dinamicamente
             // ordem decrescente
-            //$sql .= "\nORDER BY data_hora DESC"; 
+            //$sql .= "\nORDER BY data_hora DESC";
             // aplica o offset
             $sql .= "\nLIMIT $nmax OFFSET $offset";
-
-            $stmt = $pdo->prepare($sql); // prepara
-            $stmt->execute($arrayDeArgumentos); // executa
-
+            // prepara
+            $stmt = $pdo->prepare($sql);
+            //bindParam
+            for($i = 0; $i < $numeroDeArgumentos; $i++){
+                $stmt->bindParam($i+1, $_GET["key{$i}"]);
+            }
+            // executa
+            $stmt->execute();
+            /*
+                AS QUERYS NAO ESTAO FUNCIONANDO; EXECUTE ESTA RETORNANDO 0 LINHAS
+                $stmt->rowCount() == 0;
+            */
             // pega as tuplas e cria os objetos que serao transformados no JSON
             $arrayDeObjetos = [];
             while($row = $stmt->fetch()){

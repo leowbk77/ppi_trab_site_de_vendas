@@ -12,7 +12,7 @@ class Anuncio {
     public $codigo_categoria;
     public $codigo_anunciante;
 
-    public __construct($codigo, $titulo, $descricao, $preco, $data_hora, $cep, $bairro, $cidade, $estado, $codigo_categoria, $codigo_anunciante){
+    function __construct($codigo, $titulo, $descricao, $preco, $data_hora, $cep, $bairro, $cidade, $estado, $codigo_categoria, $codigo_anunciante){
         $this->$codigo = $codigo;
         $this->$titulo = $titulo;
         $this->$descricao = $descricao;
