@@ -2,13 +2,18 @@ const formulario = document.getElementById("cadastroForm");
 
 function validaCadastro(){
     let formValido = true;
-    const nomeSpan = formulario.inputNome.nextElementSibling;
-    const cpfSpan = formulario.inputCPF.nextElementSibling;
-    const senhaSpan = formulario.inputPasswd.nextElementSibling;
-    const telefoneSpan = formulario.inputTel.nextElementSibling;
+    const nomeSpan = document.getElementById("spanNome");
+    const emailSpan = document.getElementById("spanEmail");
+    const cpfSpan = document.getElementById("spanCPF");
+    const senhaSpan = document.getElementById("spanSenha");
+    const telefoneSpan = document.getElementById("spanTel");
 
     if(formulario.inputNome.value === ""){
         nomeSpan.textContent = 'O campo de nome é necessário!';
+        formValido = false;
+    }
+    if (formulario.inputEmail.value === "") {
+        emailSpan.textContent = 'O campo de email é necessário!';
         formValido = false;
     }
     if(formulario.inputCPF.value === ""){
@@ -27,6 +32,4 @@ function validaCadastro(){
     return formValido;
 }
 
-document.addEventListener('DOMContentLoaded', function (){
-    document.forms.formCadastro.onsubmit = validaCadastro;
-});
+formulario.onsubmit = validaCadastro;
