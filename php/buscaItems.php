@@ -11,12 +11,13 @@
     $offset = $_GET["offset"];
     $offset *= $nmax;
 
-    // preenchendo o array de argumentos
-    //for($i = 0; $i < $numeroDeArgumentos; $i++){ 
-    //    $arrayDeArgumentos[] = $_GET["key{$i}"];
-    //}
+    //preenchendo o array de argumentos
+    for($i = 0; $i < $numeroDeArgumentos; $i++){ 
+        $arrayDeArgumentos[] = "%" . $_GET["key{$i}"] . "%";
+    }
 
     $pdo = connectToMysql();
+
     if(($pdo == null) or ($numeroDeArgumentos < 1)){
         // erro a ser tratado
         echo "erro no IF";
@@ -24,14 +25,14 @@
         try {
 
             $sql = <<<SQL
-            SELECT *
+            SELECT codigo, titulo, descricao, preco, data_hora, cep, bairro, cidade, estado, codigo_categoria, codigo_anunciante
             FROM anuncio
             WHERE
             SQL; 
             // base da query
 
             for($i = 0; $i < $numeroDeArgumentos; $i++){
-                $sql .= "\ntitulo like '%?%'";
+                $sql .= " anuncio.titulo like ?";
                 if($i + 1 < $numeroDeArgumentos){
                     $sql .= " AND";
                 }
@@ -40,24 +41,17 @@
             // ordem decrescente
             //$sql .= "\nORDER BY data_hora DESC";
             // aplica o offset
-            $sql .= "\nLIMIT $nmax OFFSET $offset";
+            $sql .= " LIMIT $nmax OFFSET $offset";
+            //echo $sql;
             // prepara
             $stmt = $pdo->prepare($sql);
-            //bindParam
-            for($i = 0; $i < $numeroDeArgumentos; $i++){
-                $stmt->bindParam($i+1, $_GET["key{$i}"]);
-            }
             // executa
-            $stmt->execute();
-            /*
-                AS QUERYS NAO ESTAO FUNCIONANDO; EXECUTE ESTA RETORNANDO 0 LINHAS
-                $stmt->rowCount() == 0;
-            */
+            $stmt->execute($arrayDeArgumentos);
             // pega as tuplas e cria os objetos que serao transformados no JSON
             $arrayDeObjetos = [];
             while($row = $stmt->fetch()){
                 $arrayDeObjetos[] = new Anuncio(
-                    htmlspecialchars($row['codigo']),
+                                    $row['codigo'],
                     htmlspecialchars($row['titulo']),
                     htmlspecialchars($row['descricao']),
                     htmlspecialchars($row['preco']),
@@ -66,11 +60,11 @@
                     htmlspecialchars($row['bairro']),
                     htmlspecialchars($row['cidade']),
                     htmlspecialchars($row['estado']),
-                    htmlspecialchars($row['codigo_categoria']),
-                    htmlspecialchars($row['codigo_anunciante'])
+                                    $row['codigo_categoria'],
+                                    $row['codigo_anunciante']
                 );
             }
-                        
+
             header('Content-type: application/json');
             echo json_encode($arrayDeObjetos);
         } catch (Exception $e) {
