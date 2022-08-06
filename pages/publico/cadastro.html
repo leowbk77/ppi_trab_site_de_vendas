@@ -73,22 +73,27 @@
     <!-- CONTEUDO PRINCIPAL -->
     <main>
         <div class="cadastroDiv">
-            <form action="#" method="" class="cadastroForm">
+            <form action="/loja/php/cadastraAnunciante.php" method="POST" class="cadastroForm" id="cadastroForm">
                 <div class="form-contnt-cadastro">
                     <div class="formCadastroItem">
-                        <input type="text" name="inputNome" id="inputNome" placeholder="Nome">
+                        <input type="text" name="inputNome" id="inputNome" placeholder="Nome" required>
+                        <span></span>
                     </div>
                     <div class="formCadastroItem">
-                        <input type="text" name="inputCPF" id="inputCPF" placeholder="CPF">
+                        <input type="text" name="inputCPF" id="inputCPF" placeholder="CPF" required>
+                        <span></span>
                     </div>
                     <div class="formCadastroItem">
-                        <input type="email" name="inputEmail" id="inputEmail" placeholder="E-mail">
+                        <input type="email" name="inputEmail" id="inputEmail" placeholder="E-mail" required>
+                        <span></span>
                     </div>
                     <div class="formCadastroItem">
-                        <input type="password" name="inputPasswd" id="inputPasswd" placeholder="Senha">
+                        <input type="password" name="inputPasswd" id="inputPasswd" placeholder="Senha" required>
+                        <span></span>
                     </div>
                     <div class="formCadastroItem">
-                        <input type="tel" name="inputTel" id="inputTel" placeholder="Telefone">
+                        <input type="tel" name="inputTel" id="inputTel" placeholder="Telefone" required>
+                        <span></span>
                     </div>
                     <div class="formCadastroItem">
                         <button type="submit">Login</button>
@@ -101,6 +106,8 @@
     <footer>
         <p>footer</p>
     </footer>
+
+    <script src=""></script>
 </body>
 </html>
 </body>
