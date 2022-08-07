@@ -71,3 +71,7 @@ INSERT INTO foto
 VALUES (11, 'http://www.hellasconstructions.com/page-under-construction.jpg');
 INSERT INTO foto
 VALUES (12, 'http://www.hellasconstructions.com/page-under-construction.jpg');
+
+
+INSERT INTO enderecos_ajax (cep,bairro,cidade,estado) VALUES ("38400-100","Centro","Uberlândia","MG");
+INSERT INTO enderecos_ajax (cep,bairro,cidade,estado) VALUES ("38400-200","Fundinho","Uberlândia","SP");

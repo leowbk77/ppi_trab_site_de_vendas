@@ -39,6 +39,38 @@ function preencheCategoria() {
     requisicao.send();
 }
 
+function buscarCep(valorCep){
+    if (valorCep.length != 9)
+        return;
+
+    let objetoJS = {
+        cep: valorCep
+    }     
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "busca-endereco.php");
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.onload = function () {
+        const endereco = JSON.parse(xhr.responseText);
+        let form = document.querySelector("form");
+        form.bairro.value = endereco.bairro;
+        form.cidade.value = endereco.cidade;
+        form.estado.value = endereco.estado;
+    }
+
+    xhr.onerror = function () {
+        console.error("Erro de rede - requisição não finalizada");
+    };
+
+    xhr.send(JSON.stringify(objetoJS));
+
+}
+
 window.onload = function () {
     preencheCategoria();
+
+    const inputCep = document.querySelector("#cep");
+    inputCep.onkeyup = () => buscarCep(inputCep.value);
 }
