@@ -7,7 +7,8 @@ let numeroDaConsulta = 0; // usar pra calcular o offset no lado do servidor; dev
 
 function createCard(/*caminhoDaImagem,*/ titulo, preco /*, descricao, codigo*/){
     // No futuro receber as infos por argumento e colocar no card
-    /*  COLOCAR UM ID COM O ID DO PRODUTO ?????
+    // usar o codigo do produto para gerar a pagina de visualizacao EX : src="/php/produto.php?cod=xxxxxx"
+    /*  COLOCAR UM ID COM O ID DO PRODUTO
                     <div class="cardProduto">
                         <a href="#">
                             <img src="https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" alt="fotoDoproduto">
@@ -35,7 +36,7 @@ function createCard(/*caminhoDaImagem,*/ titulo, preco /*, descricao, codigo*/){
     anchorDoCard.href = "#"; // /php/produto.php?codigo=codigo <= gera a pagina de anuncio ?
     imgDoCard.src = "http://www.hellasconstructions.com/page-under-construction.jpg"/*caminhoDaImagem*/; // url reporaria pra testes
     tituloDoCard.innerHTML = titulo;
-    spanPreco.innerHTML = preco;
+    spanPreco.innerHTML = "R$ " + preco;
     //descDoCard.innerHTML = descricao;
 
     return divDoCard;
