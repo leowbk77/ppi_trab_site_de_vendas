@@ -5,47 +5,44 @@ const gridDosCards = document.getElementById("items-grid");
 const urlBase = "/loja/php/buscaItems.php?qnt=";
 let numeroDaConsulta = 0; // usar pra calcular o offset no lado do servidor; deve ser incrementado apos cada busca
 
-function createCard(/*caminhoDaImagem,*/ titulo, preco /*, descricao, codigo*/){
-    // No futuro receber as infos por argumento e colocar no card
+function createCard(/*caminhoDaImagem,*/ titulo, preco, descricao, codigo){
     // usar o codigo do produto para gerar a pagina de visualizacao EX : src="/php/produto.php?cod=xxxxxx"
-    /*  COLOCAR UM ID COM O ID DO PRODUTO
-                    <div class="cardProduto">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" alt="fotoDoproduto">
-                            <h2>Produto</h2>
-                            <span class="item-preco">R$ 8,00</span>
-                        </a>
-                    </div>
-     */
+    /*  COLOCAR UM ID COM O ID DO PRODUTO??
+                    <template id="templateDoCard">
+                        <div class="cardProduto">
+                            <a href="{{ANCHORLINK}}" class="linkDoProduto">
+                                <div class="cardProduto-visual">
+                                    <img src="{{IMGSRC}}" alt="foto do produto">
+                                    <div class="item-info">
+                                        <h2>{{PRODH2}}</h2>
+                                        <span class="item-preco">R$ {{ITEMPRECO}}</span>
+                                    </div>
+                                </div>
+                                <span class="item-descricao">{{ITEMDESC}}</span>
+                            </a>
+                        </div>
+                    </template>
+    */
+   // limita a descricao a 134 chars?
+    if(descricao.length > 134){
+        let corteDeChars = (-1) * (descricao.length - 134);
+        descricao = descricao.slice(0, corteDeChars);
+    }
 
-    const divDoCard     = document.createElement("div");
-    const anchorDoCard  = document.createElement("a");
-    const imgDoCard     = document.createElement("img");
-    const tituloDoCard  = document.createElement("h2");
-    const spanPreco     = document.createElement("span");
-    //const descDoCard  = document.createElement("span");
-
-    divDoCard.appendChild(anchorDoCard);
-    anchorDoCard.appendChild(imgDoCard);
-    anchorDoCard.appendChild(tituloDoCard);
-    anchorDoCard.appendChild(spanPreco);
-    //anchorDoCard.appendChild(descDoCard);
-    
-    divDoCard.className = "cardProduto"; // atribuicao de classe por causa do CSS
-    spanPreco.className = "item-preco"; // 
-    anchorDoCard.href = "#"; // /php/produto.php?codigo=codigo <= gera a pagina de anuncio ?
-    imgDoCard.src = "http://www.hellasconstructions.com/page-under-construction.jpg"/*caminhoDaImagem*/; // url reporaria pra testes
-    tituloDoCard.innerHTML = titulo;
-    spanPreco.innerHTML = "R$ " + preco;
-    //descDoCard.innerHTML = descricao;
-
-    return divDoCard;
+    const templateDoCard = document.getElementById("templateDoCard");
+    let html = templateDoCard.innerHTML
+    .replace("{{ANCHORLINK}}", "/php/produto.php?cod=" + codigo)
+    .replace("{{IMGSRC}}", "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png") //imagem temporaria - passar o caminhoDaImagem no futuro
+    .replace("{{PRODH2}}", titulo)
+    .replace("{{ITEMPRECO}}", "R$ " + preco)
+    .replace("{{ITEMDESC}}", descricao);
+    return html;
 }
 
 function renderCards(objetoJS) {
     var novoCard = '';
     for(let item of objetoJS){
-        novoCard = createCard(item.titulo, item.preco);
+        novoCard = createCard(item.titulo, item.preco, item.descricao, item.codigo);
         gridDosCards.appendChild(novoCard);
     }
 }

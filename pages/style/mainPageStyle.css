@@ -1,8 +1,8 @@
-/* VARIAVEIS DE COR*/
-
+/* VARIAVEIS DE COR */
 :root {
     --teste: #fff;
-    --nav-color: rgb(51, 51, 51);
+    --store-cinza-escuro: rgb(51, 51, 51);
+    --store-blue: rgb(23, 32, 216);
 }
 
 /* */
@@ -52,12 +52,13 @@ footer {
 
 .right-items {
     display: flex;
+    align-items: center;
 }
 
 /* NAVEGACAO - TRANSFORMAR EM DISPLAY FLEX - */
 
 .nav-div {
-    background-color: var(--nav-color);
+    background-color: var(--store-cinza-escuro);
     height: 3rem;
 }
 
@@ -67,27 +68,15 @@ footer {
     text-align: center;
 }
 
-.left{
-    display: inherit;
-    float: left;
-    margin-left: 1rem;
-}
-
-.right{
-    display: inherit;
-    float: right;
-    margin-right: 1rem;
-}
-
 /* BOTOES */
 
 #search-bar-btn {
     width: 1.5rem;
     height: 2rem;
     margin-left: 0;
-    background-color: var(--nav-color);
-    border: 2px solid rgb(23, 32, 216); /* A COR AZUL EH TEMPORARIA (O estilo todo na real)*/
-    color: rgb(23, 32, 216);
+    background-color: var(--store-cinza-escuro);
+    border: 2px solid var(--store-blue); /* A COR AZUL EH TEMPORARIA (O estilo todo na real)*/
+    color: var(--store-blue);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -97,7 +86,7 @@ footer {
 
 #search-bar-btn:hover {
     border-color: var(--teste);
-    background-color: rgb(23, 32, 216);
+    background-color: var(--store-blue));
     color: white;
 }
 
@@ -138,7 +127,7 @@ main {
 
 .main-content-div {
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas: 
     "navbar maincontent asidecontent"
@@ -172,6 +161,7 @@ li a {
     border-radius: 5px;
     padding: 1rem;
     grid-area: maincontent;
+    min-width: fit-content;
 }
 
 .main-content-aside {
@@ -179,16 +169,17 @@ li a {
     padding: 1rem;
 }
 
-/* EXIBICAO DE ITEMS */
+/* EXIBICAO DE ITEMS  -  CARDS */
 
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    /*grid-template-rows: repeat(4, 1fr);*/
     gap: 1rem;
 }
 
 .cardProduto {
+    max-width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,11 +193,59 @@ li a {
 }
 
 .cardProduto img {
-    background-color: green;
-    height: 10rem;
+    /*background-color: green;*/
+    max-height: 12rem;
     padding: 2rem;
 }
 
 .cardProduto a {
     text-decoration: none;
+}
+
+.linkDoProduto {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardProduto-visual {
+    display: flex;
+}
+
+.item-info {
+    margin-left: 1rem;
+}
+
+.item-descricao {
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+/* MEDIA QUERYS */
+
+@media (max-width: 1024px){
+    .main-content-navbar {
+        display: none;
+    }
+    
+    .cardProduto img {
+        max-width: 7rem;
+        padding: 2rem;
+    }
+
+}
+
+@media (max-width: 728px){
+
+    .cardProduto img {
+        max-width: 5rem;
+        padding: 2rem;
+    }
+
+    .main-content-navbar {
+        display: none;
+    }
+
+    .main-content-main-section {
+        width: 90%;
+    }
 }
