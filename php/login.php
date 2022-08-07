@@ -11,7 +11,7 @@ class Resposta{
 
     function __construct($sucesso, $caminho){
         $this->sucesso = $sucesso;
-        $thus->caminho = $caminho;
+        $this->caminho = $caminho;
     }
 }
 

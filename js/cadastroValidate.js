@@ -1,5 +1,5 @@
 const formulario = document.getElementById("cadastroForm");
-
+// https://www.chromium.org/developers/design-documents/create-amazing-password-forms/
 function validaCadastro(){
     let formValido = true;
     const nomeSpan = document.getElementById("spanNome");
@@ -16,7 +16,7 @@ function validaCadastro(){
         emailSpan.textContent = 'O campo de email é necessário!';
         formValido = false;
     }
-    if(formulario.inputCPF.value === ""){
+    if(formulario.inputCPF.value.length < 11){
         cpfSpan.textContent = 'O campo de cpf é necessário!';
         formValido = false;
     }
