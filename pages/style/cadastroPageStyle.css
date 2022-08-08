@@ -1,0 +1,51 @@
+.cadastro-main-content {
+    display: grid;
+    grid-template-areas: "esquerda meio direita";
+    justify-items: center;
+}
+
+.cadastroDiv {
+    width: 50%;
+    grid-area: meio;
+    background-color: var(--teste);
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.cadastro-nav-bar {
+    background-color: var(--store-cinza-escuro);
+    height: 3rem;
+}
+
+#cadastro-titulo {
+    color: white;
+    padding: 1rem;
+    margin: 0; /* MUDAR */
+    font-size: 1.5em;
+}
+
+.form-contnt-cadastro {
+    display: flex;
+    flex-direction: column;
+}
+
+.formCadastroItem {
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+.formCadastroItem input {
+    margin-bottom: 1rem;
+    height: 2rem;
+}
+
+.formCadastroItem button {
+    
+}
+
+@media (max-width: 728px){
+    .cadastroDiv {
+        width: 95%;
+    }
+}

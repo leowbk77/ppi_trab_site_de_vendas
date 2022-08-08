@@ -1,13 +1,53 @@
+<?php
+    require "connect.php";
+
+    $codigo = $_GET["cod"] ?? "";
+    $codigo = htmlspecialchars($codigo);
+
+    $pdo = connectToMysql();
+    if ($pdo == null) {
+        echo "erro na conexao com BD";
+    }else{
+        try {
+            $sqlAnuncio = <<<SQL
+            SELECT *
+            FROM anuncio
+            WHERE codigo = ?
+            SQL;
+
+            $sqlFoto = <<<SQL
+            SELECT arquivo_foto
+            FROM foto
+            WHERE codigo_anuncio = ?
+            SQL;
+
+            $stmt = $pdo->prepare($sqlAnuncio);
+            $stmt->execute([$codigo]);
+
+            $stmtFotos = $pdo->prepare($sqlFoto);
+            $stmtFotos->execute([$codigo]);
+
+            $anuncio = $stmt->fetch(); // So deve existir um registro por anuncio
+            $arrayDeFotos = [];
+
+            while($row = $stmtFotos->fetch()){
+                $arrayDeFotos[] = $row['arquivo_foto']; // cria um array com as strings dos caminhos das fotos
+            }
+        } catch (Exception $e) {
+            exit('Ocorreu uma falha: ' . $e->getMessage());
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/cadastroPageStyle.css">
-    <link rel="stylesheet" href="../style/mainPageStyle.css">
-    <link rel="stylesheet" href="../style/fonts.css">
-    <title>Cadastro</title>
+    <link rel="stylesheet" href="/loja/pages/style/mainPageStyle.css">
+    <link rel="stylesheet" href="/loja/pages/style/productView.css">
+    <link rel="stylesheet" href="/loja/pages/style/fonts.css">
+    <title><?php echo htmlspecialchars($anuncio['titulo']); ?></title>
 </head>
 <body>
     <header class="cabecalho">
@@ -39,49 +79,37 @@
 
             <div class="right-items">
                     <div class="client-area">
-                        <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
+                        <img src="/loja/pages/style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
                     </div>
             </div>
 
         </div>
 
-        <!-- BARRA DE CATEGORIAS SUPERIOR -->
-        <div class="cadastro-nav-bar font-roboto">
-            <h1 id="cadastro-titulo">Cadastro</h1>
+        <!-- BARRA DE CATEGORIAS SUPERIOR (DAR UM JEITO NISSO AQUI) -->
+        <div class="name-div font-roboto">
+            <h1 id="nomeH1"><?php echo htmlspecialchars($anuncio['titulo']); ?></h1>
         </div>
     </header>
 
-    <!-- CONTEUDO PRINCIPAL -->
     <main>
-        <div class="cadastro-main-content">
-            <div class="cadastroDiv">
-                <form action="/loja/php/cadastraAnunciante.php" method="POST" class="cadastroForm" id="cadastroForm" name="cadastroForm">
-                    <div class="form-contnt-cadastro">
-                        <div class="formCadastroItem">
-                            <input type="text" name="inputNome" id="inputNome" placeholder="Nome">
-                            <span id="spanNome"></span>
-                        </div>
-                        <div class="formCadastroItem">
-                            <input type="text" name="inputCPF" id="inputCPF" placeholder="CPF">
-                            <span id="spanCPF"></span>
-                        </div>
-                        <div class="formCadastroItem">
-                            <input type="email" name="inputEmail" id="inputEmail" placeholder="E-mail">
-                            <span id="spanEmail"></span>
-                        </div>
-                        <div class="formCadastroItem">
-                            <input type="password" name="inputPasswd" id="inputPasswd" placeholder="Senha">
-                            <span id="spanSenha"></span>
-                        </div>
-                        <div class="formCadastroItem">
-                            <input type="tel" name="inputTel" id="inputTel" placeholder="Telefone">
-                            <span id="spanTel"></span>
-                        </div>
-                        <div class="formCadastroItem">
-                            <button type="submit">Cadastrar</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="prod-contnt">
+            <div class="upper-contnt">
+                <div class="contnt-img">
+                    <img src="<?php echo $arrayDeFotos[0]?>" alt="IMAGEM ANUNCIO <?php echo $anuncio['codigo'] ?>" class="prod-img">
+                </div>
+                <div class="contnt-interesse">
+                    <span class="prod-preco font-poppins">R$ <?php echo htmlspecialchars($anuncio['preco']); ?></span>
+                    <button class="prod-interesse-btn">Tenho Interesse!</button>
+                </div>
+            </div>
+            <div class="lower-contnt">
+                <div class="contnt-descricao font-roboto">
+                    <h2 id="desc-h2">Descrição</h2>
+                    <p id="desc-paragrafo"><?php echo htmlspecialchars($anuncio['descricao']); ?></p>
+                    <p class="desc-parag"><?php echo htmlspecialchars($anuncio['cidade']); ?></p>
+                    <p class="desc-parag"><?php echo htmlspecialchars($anuncio['bairro']); ?></p>
+                    <p class="desc-parag"><?php echo htmlspecialchars($anuncio['estado']); ?></p>
+                </div>
             </div>
         </div>
     </main>
@@ -89,7 +117,5 @@
     <footer>
         <p>footer</p>
     </footer>
-
-    <script src="../../js/cadastroValidate.js"></script>
 </body>
 </html>

@@ -3,21 +3,26 @@
     --teste: #fff;
     --store-cinza-escuro: rgb(51, 51, 51);
     --store-blue: rgb(23, 32, 216);
+    --store-backgroud: rgb(197, 198, 199);
 }
 
 /* */
 
 body {
     margin: 0 auto;
+    background-color: var(--store-backgroud);
 }
 
 /* FOOTER */
 
 footer {
+    width: 100%;
+    height: 3rem;
+    left: 0;
+    bottom: 0;
     text-align: center;
-    border: 1px solid black;
+    background-color: var(--store-cinza-escuro);
     margin-top: 1rem;
-    margin-bottom: 1rem;
 }
 
 /* CABECALHO */
@@ -47,12 +52,18 @@ footer {
     align-items: center;
 }
 
-.searchForm {
-}
-
 .right-items {
     display: flex;
     align-items: center;
+}
+
+.client-area {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.client-area:hover {
+    cursor: pointer;
 }
 
 /* NAVEGACAO - TRANSFORMAR EM DISPLAY FLEX - */
@@ -60,13 +71,14 @@ footer {
 .nav-div {
     background-color: var(--store-cinza-escuro);
     height: 3rem;
+    display: flex;
+    flex-direction: row;
 }
 
-.upper-nav {
-    width: 100%;
-    display: inline-block;
-    text-align: center;
+.hamburguer-svg:hover {
+    cursor: pointer;
 }
+
 
 /* BOTOES */
 
@@ -123,6 +135,7 @@ footer {
 
 main {
     margin-top: 10px;
+    min-height: 80vh;
 }
 
 .main-content-div {
@@ -135,7 +148,9 @@ main {
 }
 
 .main-content-navbar {
-    border: 1px solid skyblue;
+    border: 1px solid var(--store-blue);
+    max-width: 10rem;
+    min-width: 7rem;
     grid-area: navbar;
     margin-left: 1rem;
     display: block;
@@ -157,7 +172,8 @@ li a {
 }
 
 .main-content-main-section {
-    border: 2px solid blue;
+    background-color: var(--teste);
+    border: 2px solid var(--store-blue);
     border-radius: 5px;
     padding: 1rem;
     grid-area: maincontent;
@@ -218,6 +234,12 @@ li a {
 .item-descricao {
     overflow: hidden;
     margin-top: 1rem;
+}
+
+/* TEMP */
+
+.not-main-page {
+    visibility: hidden;
 }
 
 /* MEDIA QUERYS */

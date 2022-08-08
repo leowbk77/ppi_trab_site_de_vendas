@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mockup Pagina principal</title>
     <link rel="stylesheet" href="../style/mainPageStyle.css">
+    <link rel="stylesheet" href="../style/fonts.css">
 </head>
 
 <body>
@@ -16,7 +17,17 @@
         <div class="header-div">
             <div class="left-store-logo">
                 <a href="#">
-                    <object data="../style/svg/logo.svg" type="image/svg+xml" class="store-logo"></object>
+                    <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" class="store-logo">
+                    <defs>
+                        <style bx:fonts="Averia Sans Libre">@import url(https://fonts.googleapis.com/css2?family=Averia+Sans+Libre%3Aital%2Cwght%400%2C300%3B0%2C400%3B0%2C700%3B1%2C300%3B1%2C400%3B1%2C700&amp;display=swap);</style>
+                        <style bx:fonts="Astloch">@import url(https://fonts.googleapis.com/css2?family=Astloch%3Aital%2Cwght%400%2C400%3B0%2C700&amp;display=swap);</style>
+                    </defs>
+                    <g transform="matrix(1.013733, 0, 0, 1.014825, -0.000004, -129.213196)">
+                        <path d="M 486.453 173.597 L 466.131 173.597 L 466.131 166.577 C 466.131 150.369 449.195 140.232 435.647 148.34 C 429.36 152.102 425.486 159.052 425.486 166.577 L 425.486 173.597 L 405.163 173.597 C 401.424 173.597 398.389 176.742 398.389 180.617 L 398.389 264.854 C 398.389 268.736 401.424 271.874 405.163 271.874 L 486.453 271.874 C 490.192 271.874 493.227 268.736 493.227 264.854 L 493.227 180.617 C 493.227 176.742 490.192 173.597 486.453 173.597 Z M 439.034 166.577 C 439.034 161.172 444.684 157.796 449.195 160.498 C 451.295 161.755 452.582 164.071 452.582 166.577 L 452.582 173.597 L 439.034 173.597 L 439.034 166.577 Z M 479.679 257.834 L 411.937 257.834 L 411.937 187.637 L 425.486 187.637 L 425.486 198.166 C 425.486 203.572 431.135 206.948 435.647 204.245 C 437.747 202.996 439.034 200.679 439.034 198.166 L 439.034 187.637 L 452.582 187.637 L 452.582 198.166 C 452.582 203.572 458.232 206.948 462.744 204.245 C 464.844 202.996 466.131 200.679 466.131 198.166 L 466.131 187.637 L 479.679 187.637 L 479.679 257.834 Z" style="fill: rgb(176, 169, 152);"></path>
+                        <text style="fill: rgb(51, 51, 51); font-family: Averia Sans Libre; font-size: 78px; font-style: italic; font-weight: 700; white-space: pre;" transform="matrix(1.612796, 0, 0, 1.696177, -133.273132, -89.756783)" x="82.635" y="205.389">PPIStor</text>
+                        <text style="fill: rgb(23, 32, 216); font-family: Astloch; font-size: 17.5857px; white-space: pre;" transform="matrix(7.855598, 0, 0, 7.523171, -3175.854492, -1478.180908)" x="457.485" y="231.138">e</text>
+                    </g>
+                    </svg>
                 </a>
             </div>
             
@@ -29,12 +40,7 @@
 
             <div class="right-items">
                     <div class="client-area">
-                            <button id="botaoAcessoCliente">
-                                <span>
-                                    <object data="../style/svg/clientearea.svg" type="image/svg+xml" class="cliente-svg"></object>
-                                </span>
-                                Cliente
-                            </button>
+                        <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
                     </div>
             </div>
 
@@ -42,8 +48,7 @@
 
         <!-- BARRA DE CATEGORIAS SUPERIOR (DAR UM JEITO NISSO AQUI) -->
         <div class="nav-div">
-            <nav class="upper-nav">
-            </nav>
+            <img src="../style/svg/hamburguer.svg" alt="menu" class="hamburguer-svg">
         </div>
     </header>
 
@@ -64,12 +69,12 @@
                             <a href="{{ANCHORLINK}}" class="linkDoProduto">
                                 <div class="cardProduto-visual">
                                     <img src="{{IMGSRC}}" alt="foto do produto">
-                                    <div class="item-info">
+                                    <div class="item-info font-roboto">
                                         <h2>{{PRODH2}}</h2>
-                                        <span class="item-preco">R$ {{ITEMPRECO}}</span>
+                                        <span class="item-preco font-poppins">R$ {{ITEMPRECO}}</span>
                                     </div>
                                 </div>
-                                <span class="item-descricao">{{ITEMDESC}}</span>
+                                <span class="item-descricao font-roboto">{{ITEMDESC}}</span>
                             </a>
                         </div>
                     </template>
@@ -78,38 +83,12 @@
                         <a href="#" class="linkDoProduto">
                             <div class="cardProduto-visual">
                                 <img src="https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" alt="fotoDoproduto">
-                                <div class="item-info">
+                                <div class="item-info font-roboto">
                                     <h2>Produto</h2>
-                                    <span class="item-preco">R$ 8,00</span>
+                                    <span class="item-preco font-poppins">R$ 8,00</span>
                                 </div>
                             </div>
-                            <span class="item-descricao">Teste teste teste Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. E</span>
-                        </a>
-                    </div>
-
-                    <div class="cardProduto">
-                        <a href="#" class="linkDoProduto">
-                            <div class="cardProduto-visual">
-                                <img src="https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" alt="fotoDoproduto">
-                                <div class="item-info">
-                                    <h2>Produto</h2>
-                                    <span class="item-preco">R$ 8,00</span>
-                                </div>
-                            </div>
-                            <span class="item-descricao">Teste teste teste Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
-                        </a>
-                    </div>
-
-                    <div class="cardProduto">
-                        <a href="#" class="linkDoProduto">
-                            <div class="cardProduto-visual">
-                                <img src="https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png" alt="fotoDoproduto">
-                                <div class="item-info">
-                                    <h2>Produto</h2>
-                                    <span class="item-preco">R$ 8,00</span>
-                                </div>
-                            </div>
-                            <span class="item-descricao">Teste teste teste Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                            <span class="item-descricao font-roboto">Teste teste teste Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. E</span>
                         </a>
                     </div>
                 </div>

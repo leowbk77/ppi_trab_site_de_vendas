@@ -4,17 +4,13 @@
     padding: 1rem;
     width: 50%;
     margin: 0 auto;
+    background-color: var(--teste);
 }
 
 .form-contnt-login {
-    /*
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    */
-    margin: 0 auto;
-    /* Nao quer centralizar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .formLoginItem input {
@@ -28,7 +24,8 @@
 }
 
 .login-nav-bar {
-    background-color: var(--nav-color);
+    background-color: var(--store-cinza-escuro);
+    color: var(--teste);
     height: 3rem;
 }
 

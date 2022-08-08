@@ -29,7 +29,8 @@ CREATE TABLE anuncio (
     codigo_anunciante int,
     FOREIGN KEY (codigo_categoria) REFERENCES categoria (codigo),
     FOREIGN KEY (codigo_anunciante) REFERENCES anunciante (codigo),
-    PRIMARY KEY (codigo)
+    PRIMARY KEY (codigo),
+    UNIQUE (codigo)
 ) Engine=InnoDB;
 
 CREATE TABLE interesse (
