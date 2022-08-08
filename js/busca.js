@@ -90,3 +90,11 @@ window.onload = function () {
     numeroDaConsulta = 0;
     buscaJson(buildURL(0,[])); // primeira consulta -> apos isso a consulta incrementa e os cards sao adicionados
 }
+
+/* ROLAGEM INFINITA - 
+window.onscroll = function () {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        buscaJson(buildURL(0,[]);
+    }
+};
+*/
