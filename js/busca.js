@@ -32,7 +32,8 @@ function createCard(/*caminhoDaImagem,*/ titulo, preco, descricao, codigo){
     const templateDoCard = document.getElementById("templateDoCard");
     let html = templateDoCard.innerHTML
     .replace("{{ANCHORLINK}}", "/loja/php/produto.php?cod=" + codigo)
-    .replace("{{IMGSRC}}", "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png") //imagem temporaria - passar o caminhoDaImagem no futuro    .replace("{{PRODH2}}", titulo)
+    .replace("{{IMGSRC}}", "https://cdn.pixabay.com/photo/2013/07/12/17/41/computer-mouse-152249_960_720.png") //imagem temporaria - passar o caminhoDaImagem no futuro    
+    .replace("{{PRODH2}}", titulo)
     .replace("{{ITEMPRECO}}", "R$ " + preco)
     .replace("{{ITEMDESC}}", descricao);
     return html;

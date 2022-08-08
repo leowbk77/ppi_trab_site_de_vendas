@@ -6,7 +6,7 @@ const botaoLogin = document.getElementById("loginbtn");
 function sendLogin(){
     let xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "/php/login.php");
+    xhr.open("POST", "/loja/php/login.php");
     xhr.onload = function (){
         if(xhr.status != 200){
             console.error("Erro : \n" + xhr.responseText);
