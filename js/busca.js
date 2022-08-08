@@ -40,10 +40,10 @@ function createCard(/*caminhoDaImagem,*/ titulo, preco, descricao, codigo){
 }
 
 function renderCards(objetoJS) {
-    var novoCard = '';
+    var novoCard;
     for(let item of objetoJS){
         novoCard = createCard(item.titulo, item.preco, item.descricao, item.codigo);
-        gridDosCards.appendChild(novoCard);
+        gridDosCards.insertAdjacentHTML("beforeend", novoCard);
     }
 }
 
