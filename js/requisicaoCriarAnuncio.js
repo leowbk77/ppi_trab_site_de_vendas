@@ -1,7 +1,7 @@
 function preencheCategoria() {
     
     const requisicao = new XMLHttpRequest();
-    requisicao.open("GET","busca-categoria.php",true);
+    requisicao.open("GET","../php/busca-categoria.php",true);
 
     requisicao.onload = function () {
         if(requisicao.status != 200){
@@ -48,7 +48,7 @@ function buscarCep(valorCep){
     }     
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "busca-endereco.php");
+    xhr.open("POST", "../php/busca-endereco.php");
 
     xhr.setRequestHeader("Content-Type", "application/json");
 
