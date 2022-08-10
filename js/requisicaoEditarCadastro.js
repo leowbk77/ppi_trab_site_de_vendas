@@ -24,11 +24,17 @@ function preencheCadastro() {
         let email = document.getElementById("inputEmail");
         let telefone = document.getElementById("inputTel");
 
-        nome.value = data[0].nome;
-        cpf.value = data[0].cpf;
-        email.value = data[0].email;
-        telefone.value = data[0].telefone;
+        nome.value = data.nome;
+        cpf.value = data.cpf;
+        email.value = data.email;
+        telefone.value = data.telefone;
     }
+
+    requisicao.onerror = function() {
+        console.error("Ocorreu um erro na requisição JSON");
+    };
+
+    requisicao.send();
 }
 
 window.onload = function () {
