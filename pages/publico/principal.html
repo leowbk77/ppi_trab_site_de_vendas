@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mockup Pagina principal</title>
-    <link rel="stylesheet" href="/loja/pages/style/mainPageStyle.css">
-    <link rel="stylesheet" href="/loja/pages/style/fonts.css">
+    <link rel="stylesheet" href="../style/mainPageStyle.css">
+    <link rel="stylesheet" href="../style/fonts.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
 
             <div class="right-items">
                 <div class="client-area">
-                    <img src="/loja/pages/style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
+                    <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
                 </div>
             </div>
 
@@ -48,18 +48,42 @@
 
         <!-- BARRA DE CATEGORIAS SUPERIOR (DAR UM JEITO NISSO AQUI) -->
         <div class="nav-div">
-            <img src="/loja/pages/style/svg/hamburguer.svg" alt="menu" class="hamburguer-svg">
+            <img src="../style/svg/hamburguer.svg" alt="menu" class="hamburguer-svg" id="hamburguer-svg-id">
         </div>
     </header>
 
     <main>
         <div class="main-content-div">
-            <nav class="main-content-navbar">
-                <ul>
-                    <li><a href="#">Opcao 1</a></li>
-                    <li><a href="#">Opcao 2</a></li>
-                    <li><a href="#">Opcao 3</a></li>
-                </ul>
+            <nav class="main-content-navbar" id="main-content-navbar-nav">
+                <div class="advanced-search-bar font-roboto">
+                    <div class="adv-search-title">
+                        <h3 id="adv-search-h3" class="font-roboto">Busca avançada</h3>
+                    </div>
+                    <div class="adv-search-form-div">
+                        <form action="#" method="get" class="adv-search-form">
+                            <div class="adv-search-input-searchby adv-search-div-item">
+                                <label for="adv-srch-searchby">Busca por</label>
+                                <select name="adv-srch-searchby" id="adv-srch-searchby">
+                                    <option value="ttl">Título</option>
+                                    <option value="desc">Descrição</option>
+                                </select>
+                            </div>
+                            <div class="adv-search-input-prices-div adv-search-div-item">
+                                <label for="adv-input-min-price">Min</label>
+                                <input type="number" name="adv-input-min-price" id="adv-input-min-price" class="adv-input-price-box">
+                                <label for="adv-input-max-price">Max</label>
+                                <input type="number" name="adv-input-max-price" id="adv-input-max-price" class="adv-input-price-box">
+                            </div>
+                            <div class="adv-search-input-category adv-search-div-item">
+                                <label for="adv-srch-categories">Categorias</label>
+                                <select name="adv-srch-categories" id="adv-srch-categories">
+                                    <option value="all">Todas</option>
+                                </select>
+                            </div>
+                            <button class="search-btn  adv-search-div-item" id="adv-srch-btn">Buscar</button>
+                        </form>
+                    </div>
+                </div>
             </nav>
             <section class="main-content-main-section">
                 <div class="items-grid" id="items-grid">
@@ -91,5 +115,6 @@
     </footer>
 
     <script src="../../js/busca.js"></script>
+    <script src="../../js/buscaAvancada.js"></script>
 </body>
 </html>

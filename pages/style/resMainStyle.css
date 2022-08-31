@@ -1,0 +1,71 @@
+/* VARIAVEIS DE COR */
+:root {
+    --teste: #fff;
+    --store-cinza-escuro: rgb(51, 51, 51);
+    --store-blue: rgb(23, 32, 216);
+    --store-backgroud: rgb(197, 198, 199);
+}
+
+/* BODY */
+
+body {
+    margin: 0 auto;
+    background-color: var(--store-backgroud);
+}
+
+.res-main-div { /* TEMPORARIO */
+    min-height: 800px;
+}
+
+/* CABECALHO */
+.res-cabecalho {
+    background-color: gray;
+    display: flex;
+    flex-direction: row;
+}
+
+.store-logo {
+    width: 13rem;
+    height: 4rem;
+}
+
+/* NAVEGACAO */
+
+.res-main-div {
+    display: flex;
+    flex-direction: row;
+}
+.res-nav-menu {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--store-cinza-escuro);
+
+}
+.res-menu-item {
+    margin-top: 1rem;
+    margin: 0.5rem;
+}
+.res-menu-item:hover {
+    cursor: pointer;
+}
+
+/*  CONTEUDO */
+
+#res-novo-anuncio {
+    margin: 0.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: none;
+}
+
+#res-listagem-anuncios {
+    display: none;
+}
+
+/*  FOOTER */
+
+footer {
+    text-align: center;
+    background-color: var(--store-cinza-escuro);
+    color: white;
+}

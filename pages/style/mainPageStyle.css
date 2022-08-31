@@ -66,7 +66,7 @@ footer {
     cursor: pointer;
 }
 
-/* NAVEGACAO - TRANSFORMAR EM DISPLAY FLEX - */
+/* NAVEGACAO -- */
 
 .nav-div {
     background-color: var(--store-cinza-escuro);
@@ -79,6 +79,26 @@ footer {
     cursor: pointer;
 }
 
+/* BUSCA AVANCADA */
+.adv-search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adv-search-h3 {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.adv-input-price-box {
+    width: 2rem;
+}
+
+.adv-search-div-item {
+    margin-bottom: 1rem;
+}
 
 /* BOTOES */
 
@@ -98,8 +118,25 @@ footer {
 
 #search-bar-btn:hover {
     border-color: var(--teste);
-    background-color: var(--store-blue));
+    background-color: var(--store-blue);
     color: white;
+}
+
+#adv-srch-btn {
+    height: 1.5rem;
+    background-color: var(--store-cinza-escuro);
+    border: 2px solid var(--store-blue); /* A COR AZUL EH TEMPORARIA (O estilo todo na real)*/
+    color: var(--teste);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 5px;
+}
+
+#adv-srch-btn:hover {
+    border-color: var(--store-cinza-escuro);
+    background-color: var(--store-blue);
 }
 
 /* BARRAS */
@@ -148,19 +185,15 @@ main {
 }
 
 .main-content-navbar {
+    visibility: hidden;
     border: 1px solid var(--store-blue);
-    max-width: 10rem;
+    border-radius: 5px;
+    background-color: var(--teste);
+    /*max-width: 10rem;*/
     min-width: 7rem;
     grid-area: navbar;
     margin-left: 1rem;
     display: block;
-}
-
-.main-content-navbar ul {
-    list-style-type: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 ul li {
