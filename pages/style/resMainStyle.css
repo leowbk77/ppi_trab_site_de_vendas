@@ -62,6 +62,14 @@ body {
     display: none;
 }
 
+#res-mensagens {
+    display: none;
+}
+
+#res-dados-cadastrais {
+    display: none;
+}
+
 /*  FOOTER */
 
 footer {

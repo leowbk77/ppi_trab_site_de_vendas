@@ -12,11 +12,6 @@
 <body>
     <header class="res-cabecalho">
         <div class="res-cabecalho-left">
-            <!--
-            <div class="res-hamburguer">
-                <img src="../style/svg/hamburguer.svg" alt="menu" class="hamburguer-svg" id="hamburguer-svg-id">
-            </div> 
-            -->
             <div class="res-store-logo">
                 <a href="#">
                     <svg viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" class="store-logo">
@@ -37,15 +32,14 @@
     <main>
         <div class="res-main-div">
             <nav class="res-nav-menu">
-                <!-- TEMPORARIO -->
                 <div class="res-menu-item" id="novo-anuncio-btn">
-                    <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg"></div>
+                    <img src="../style/svg/novoanuncio.svg" alt="cliIMG"></div>
                 <div class="res-menu-item" id="listagem-anuncio-btn">
-                    <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg"></div>
+                    <img src="../style/svg/listagem.svg" alt="cliIMG"></div>
                 <div class="res-menu-item" id="mensagens-btn">
-                    <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg"></div>
+                    <img src="../style/svg/mensagens.svg" alt="cliIMG"></div>
                 <div class="res-menu-item" id="dados-cadastrais-btn">
-                    <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg"></div>
+                    <img src="../style/svg/configs.svg" alt="cliIMG"></div>
             </nav>
             <div class="res-content">
                 <div class="res-content-item container" id="res-novo-anuncio">
@@ -56,7 +50,7 @@
                                 <input type="text" name="titulo" id="inputTituloId" placeholder="Título" class="form-control">
                             </div>
                             <div class="col-md">
-                                <input type="number" name="preco" id="inputPrecoId" placeholder="Valor (R$)" class="form-control">
+                                <input type="number" step="any" name="preco" id="inputPrecoId" placeholder="Valor (R$)" class="form-control">
                             </div>
                         </div>
                         <div class="row g-1 mb-1">
@@ -70,7 +64,7 @@
                                 <input type="text" name="cidade" id="inputCidadeId" placeholder="Cidade" class="form-control">
                             </div>
                             <div class="col-md">
-                                <select id="InputEstadoId" name="estado" class="form-select">
+                                <select id="InputEstadoId" name="estado" class="form-select" title="Unidade Federativa">
                                     <option value="AC">Acre</option>
                                     <option value="AL">Alagoas</option>
                                     <option value="AP">Amapá</option>
@@ -106,14 +100,14 @@
                                 <textarea name="descricao" id="inputDescricaoId" cols="30" rows="5" placeholder="Descrição" class="form-control"></textarea>
                             </div>
                             <div>
-                                <select name="categorias" id="inputCategoriasId">
+                                <select name="categorias" id="inputCategoriasId" title="Categorias cadastradas">
                                 </select>
                             </div>
                             <div>
-                                <input type="file" name="arquivo" id="inputArquivoId">
+                                <input type="file" name="arquivo" id="inputArquivoId" placeholder="Arquivo de imagem">
                             </div>
                         </div>
-                        <!-- FALTA UM BOTAO AQUI PRA SUBMETER-->
+                        <button class="btn btn-primary btn-lg mb-1">Criar</button>
                     </form>
                 </div>
 
@@ -130,21 +124,63 @@
                             <td>linha 1</td>
                             <td>linha 1</td>
                             <td>linha 1</td>
+                            <td><img src="../style/svg/edit.svg" alt="editar"></td>
+                            <td><img src="../style/svg/remove.svg" alt="remover"></td>
                         </tr>
                         <tr>
                             <td>linha 2</td>
                             <td>linha 2</td>
                             <td>linha 2</td>
+                            <td><img src="../style/svg/edit.svg" alt="editar"></td>
+                            <td><img src="../style/svg/remove.svg" alt="remover"></td>
                         </tr>
                     </table>
                 </div>
 
-                <div class="res-content-item" id="res-mensagens">
+                <div class="res-content-item container" id="res-mensagens">
                     <!-- VISUALIZACAO E EXCLUSAO POR AQUI - PARECIDO COM A LISTAGEM DE ANUNCIOS -->
+                    <table class="table table-hover">
+                        <tr>
+                            <th>cabecalho 1</th>
+                            <th>cabecalho 2</th>
+                        </tr>
+                        <tr>
+                            <td>linha 1</td>
+                            <td>linha 1</td>
+                            <td><img src="../style/svg/remove.svg" alt="remover"></td>
+                        </tr>
+                        <tr>
+                            <td>linha 2</td>
+                            <td>linha 2</td>
+                            <td><img src="../style/svg/remove.svg" alt="remover"></td>
+                        </tr>
+                    </table>
                 </div>
                 
-                <div class="res-content-item" id="res-dados-cadastrais">
+                <div class="res-content-item container" id="res-dados-cadastrais">
                     <!-- FORM SIMPLES -->
+
+                    <form action="#" id="res-edit-personal-info">
+                        <legend>Alterar dados cadastrais</legend>
+                        <div class="row g-1 mb-1">
+                            <div class="col-md">
+                                <input type="text" name="res-edit-p-nome" id="res-edit-p-nome" placeholder="Nome">
+                            </div>
+                            <div class="col-md">
+                                <input type="text" name="res-edit-p-cpf" id="res-edit-p-cpf" placeholder="CPF">
+                            </div>
+                        </div>
+                        <div class="row g-1 mb-1">
+                            <div class="col-md">
+                                <input type="password" name="res-edit-p-senha" id="res-edit-p-senha" placeholder="Senha">
+                            </div>
+                            <div class="col-md">
+                                <input type="tel" name="res-edit-p-tel" id="res-edit-p-tel" placeholder="Telefone">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" id="res-edit-p-submit-btn">Enviar</button>
+                    </form>
                 </div>
             </div>
         </div>
