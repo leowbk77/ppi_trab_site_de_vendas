@@ -1,9 +1,21 @@
 <?php
+    class Resposta {
+        public $sucesso;
+        public $mensagem;
+
+        public function __construct($sucesso, $mensagem){
+            $this->sucesso = $sucesso;
+            $this->mensagem = $mensagem;
+        }
+    }
+
     require "connect.php";
     $pdo = connectToMysql();
+
     // tratamento no nome do arquivo em falta
-    $uploadFoto = '/htdocs/loja/imgfiles/' . basename($_FILES['arquivo']['name']);
+    $uploadFoto = '../imgfiles/' . basename($_FILES['arquivo']['name']);
     $caminhoFoto = 'leomf.great-site.net/loja/imgfiles/' . basename($_FILES['arquivo']['name']);
+
     $titulo = $_POST['titulo'] ?? '';
     $preco = $_POST['preco'] ?? '';
     $cep = $_POST['cep'] ?? '';
@@ -14,10 +26,15 @@
     $categoria = $_POST['categorias'] ?? '';
     $codAnunciante = $_POST['codAnunciante'] ?? '';
 
-    if(move_uploaded_file($_FILES['arquivo']['tmp_name']), $uploadFoto){
-        echo "arquivo enviado.\n";
-    }else{
-        echo "erro no upload do arquivo.\n";
+    // criar uma funcao para diminuir a repeticao do codigo da resposta
+    // criar um script que so faz o trabalho de salvar o arquivo igual ao connect do pdo
+    // https://www.edureka.co/community/91921/how-to-upload-and-save-files-with-desired-name-using-php
+    // https://www.w3schools.com/php/php_file_upload.asp
+    // remover essas strings do exit talvez pra nao bugar a resposta
+    if(!move_uploaded_file($_FILES['arquivo']['tmp_name'], $uploadFoto)){
+        //resposta
+        header('Content-type: application/json');
+        echo json_encode(new Resposta(False, 'Erro no save do arquivo'));
         exit('falha upload do arquivo');
     }
 
@@ -43,9 +60,14 @@
 
         $pdo->commit();
 
-        //finalizar o script com alguma resposta
+        //resposta
+        header('Content-type: application/json');
+        echo json_encode(new Resposta(True, 'Inserts commitados no banco!'));
     } catch (Exception $e) {
         $pdo->rollBack();
+        //resposta
+        header('Content-type: application/json');
+        echo json_encode(new Resposta(False, 'Rollback realizado, inserts nao realizados no banco'));
         exit('Ocorreu uma falha: ' . $e->getMessage());
     }
 ?>

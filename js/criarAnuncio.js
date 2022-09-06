@@ -32,18 +32,28 @@ function requestCategorias(){
     }
 }
 
+function criarAnuncioResposta(resposta){
+    let sucessoTeste = resposta.sucesso;
+    let mensagemTeste = resposta.mensagem;
+
+    console.log(typeof sucessoTeste);
+    console.log(mensagemTeste);
+}
+
 function criarAnuncio(){
     try {
         let dados = new FormData(formCadastro);
         dados.append('codAnunciante', codAnunciante);
 
         let xhr = new XMLHttpRequest();
+        xhr.responseType = 'json';
         xhr.open('POST', '../../php/novoProduto.php');
         xhr.onload = function (){
             if(xhr.response === null){
-                console.log('falha no insert de novo produto');
+                console.log('falha: resposta nao obtida');
                 return;
             }
+            criarAnuncioResposta(xhr.response);
         }
         xhr.send(dados);
     } catch (error) {
@@ -53,5 +63,5 @@ function criarAnuncio(){
 
 window.onload = function (){
     requestCategorias();
-    botaoSend.addEventListener('click', criarAnuncio());
+    botaoSend.addEventListener('click', criarAnuncio);
 }
