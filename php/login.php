@@ -1,7 +1,7 @@
 <?php
 
 require_once "connect.php";
-require_once "autenticacao.php"
+require_once "autenticacao.php";
 
 session_start();
 
@@ -15,8 +15,8 @@ class Resposta{
     }
 }
 
-$email = $_POST['inputEmail'] ?? "";
-$passwd = $_POST['inputSenha'] ?? "";
+$email = $_POST['email'] ?? "";
+$passwd = $_POST['senha'] ?? "";
 
 $pdo = connectToMysql();
 

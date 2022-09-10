@@ -1,10 +1,20 @@
+<?php
+    require_once "../../php/connect.php";
+    require_once "../../php/autenticacao.php";
+
+    session_start();
+    $pdo = connectToMysql();
+    kickLogin($pdo);
+    exitWhenNotLogged($pdo);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <title>Olá <?php echo '{{temp}}' ?></title>
     <link rel="stylesheet" href="../style/mainPageStyle.css">
     <link rel="stylesheet" href="../style/fonts.css">
 </head>
@@ -39,7 +49,7 @@
             </div>
 
             <div class="right-items">
-                <div class="client-area" id="login-page-btn">
+                <div class="client-area" id="client-area-btn">
                     <img src="../style/svg/clientearea.svg" alt="cliIMG" class="cliente-svg">
                 </div>
             </div>
@@ -116,12 +126,6 @@
 
     <script src="../../js/busca.js"></script>
     <script src="../../js/buscaAvancada.js"></script>
-    <script>
-        const botaoLogin = document.getElementById("login-page-btn");
-        function sendToLoginPage(){
-            window.location = './login.html';
-        }
-        botaoLogin.addEventListener('click', sendToLoginPage);
-    </script>
+    <script src="../../js/principalControlador.js"></script>
 </body>
 </html>
